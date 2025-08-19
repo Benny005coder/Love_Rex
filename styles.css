@@ -1,0 +1,393 @@
+/* Love_Rex 网站样式文件 */
+/* 采用苹果设计风格，营造浪漫温馨的氛围 */
+
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 根元素变量定义 */
+:root {
+    /* 苹果风格色彩系统 */
+    --primary-pink: #FF6B9D;
+    --secondary-pink: #FF8FB1;
+    --accent-pink: #FFB3D1;
+    --light-pink: #FFE5F0;
+    --white: #FFFFFF;
+    --black: #1D1D1F;
+    --gray: #86868B;
+    --light-gray: #F5F5F7;
+    
+    /* 阴影效果 */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.2);
+    
+    /* 圆角 */
+    --border-radius: 20px;
+    --border-radius-small: 12px;
+    
+    /* 过渡动画 */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* 基础样式 */
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--light-pink) 0%, var(--white) 50%, var(--accent-pink) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--black);
+    line-height: 1.6;
+}
+
+/* 主容器 */
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* 标题区域 */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+/* 爱心按钮区域 */
+.heart-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* 主爱心按钮 */
+.heart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition: transform var(--transition-medium);
+    animation: pulse 2s infinite;
+}
+
+.heart-button:hover {
+    transform: scale(1.05);
+}
+
+.heart-button:active {
+    transform: scale(0.95);
+}
+
+/* 爱心形状 */
+.heart-shape {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+    position: relative;
+    border-radius: 50%;
+    box-shadow: var(--shadow-medium);
+    transition: all var(--transition-medium);
+}
+
+.heart-shape::before,
+.heart-shape::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 100px;
+    background: inherit;
+    border-radius: 60px 60px 0 0;
+}
+
+.heart-shape::before {
+    left: 30px;
+    top: -50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-shape::after {
+    left: 30px;
+    top: -50px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.heart-button:hover .heart-shape {
+    box-shadow: var(--shadow-heavy);
+    transform: scale(1.1);
+}
+
+/* 按钮文字 */
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 夸奖话语容器 */
+.message-container {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    max-width: 600px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+    margin: 0 1rem;
+}
+
+.message-text {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: 500;
+    line-height: 1.8;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* 飘落爱心容器 */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+    animation: floatDown 4s linear infinite;
+    opacity: 0.7;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    background: inherit;
+    border-radius: 10px 10px 0 0;
+}
+
+.floating-heart::before {
+    left: 5px;
+    top: -8px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.floating-heart::after {
+    left: 5px;
+    top: -8px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* 底部装饰 */
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.footer-text {
+    font-size: 1rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+/* 动画关键帧 */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 1rem;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .heart-shape {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .heart-shape::before,
+    .heart-shape::after {
+        width: 50px;
+        height: 83px;
+    }
+    
+    .heart-shape::before {
+        left: 25px;
+        top: -42px;
+    }
+    
+    .heart-shape::after {
+        left: 25px;
+        top: -42px;
+    }
+    
+    .message-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .message-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .heart-shape {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .heart-shape::before,
+    .heart-shape::after {
+        width: 40px;
+        height: 67px;
+    }
+    
+    .heart-shape::before {
+        left: 20px;
+        top: -33px;
+    }
+    
+    .heart-shape::after {
+        left: 20px;
+        top: -33px;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1D1D1F;
+        --black: #FFFFFF;
+        --gray: #A1A1A6;
+        --light-gray: #2C2C2E;
+        --light-pink: #2A1A1F;
+    }
+    
+    body {
+        background: linear-gradient(135deg, var(--light-pink) 0%, var(--white) 50%, #3A2A2F 100%);
+    }
+    
+    .message-container {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}

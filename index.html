@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love_Rex - 给老公的爱</title>
+    <meta name="description" content="一个浪漫的爱心网站，用来表达对老公的爱意和赞美">
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入苹果系统字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 主容器 -->
+    <main class="main-container">
+        <!-- 标题区域 -->
+        <header class="header">
+            <h1 class="title">Love_Rex</h1>
+            <p class="subtitle">给最棒的老公</p>
+        </header>
+
+        <!-- 爱心按钮区域 -->
+        <section class="heart-section">
+            <!-- 主爱心按钮 -->
+            <button class="heart-button" id="heartButton" aria-label="点击查看夸奖话语">
+                <div class="heart-shape"></div>
+                <span class="button-text">点击我</span>
+            </button>
+            
+            <!-- 夸奖话语显示区域 -->
+            <div class="message-container" id="messageContainer">
+                <p class="message-text" id="messageText">点击爱心按钮，看看我想对你说什么</p>
+            </div>
+        </section>
+
+        <!-- 飘落爱心容器 -->
+        <div class="floating-hearts" id="floatingHearts"></div>
+
+        <!-- 底部装饰 -->
+        <footer class="footer">
+            <p class="footer-text">❤️ 永远爱你 ❤️</p>
+        </footer>
+    </main>
+
+    <!-- 引入交互脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
